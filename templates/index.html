@@ -9,16 +9,31 @@
   <body>
     <div class="main-content">
       <div class="header">
-        <div onclick="window.location.reload();" style="cursor: pointer; background-color: black; border: 2px solid black; border-radius: 10px; padding: 10px;">Get-EasyAid</div>
+        <div
+          onclick="window.location.reload();"
+          style="
+            cursor: pointer;
+            background-color: black;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+          "
+        >
+          Get-EasyAid
+        </div>
         <div class="header-right">
           <button
             class="icon-btn icon-menu"
             onclick="toggleDropdown()"
           ></button>
           <div class="dropdown-menu" id="dropdownMenu">
-            <a href="#">Source Code</a>
-            <a href="#">Stalk me?</a>
-            <a href="#">Buy me a coffee ☕️</a>
+            <a href="https://github.com/VoyagerX21/Get-AidEasy" target="_blank"
+              >Source Code</a
+            >
+            <a href="https://www.instagram.com/_gaurav.khakse_/" target="_blank"
+              >Stalk my insta?</a
+            >
+            <a href="#" onclick="openModal()">Buy me a coffee ☕️</a>
           </div>
         </div>
       </div>
@@ -38,6 +53,34 @@
             <div class="search-btn icon-search" id="searchIcon"></div>
           </div>
           <div class="dropdown" id="dropdown"></div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="coffeeOverlay" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+
+        <h2>Buy me a coffee!</h2>
+
+        <div class="message">
+          <strong>Hey there! 👋</strong><br /><br />
+          If my work helped you in any way or brought a smile to your face,
+          consider buying me a coffee! ☕<br /><br />
+          Every small contribution fuels my passion for coding and keeps me
+          motivated to create more awesome stuff! <span class="heart">❤️</span>
+        </div>
+
+        <div class="upi-section">
+          <div class="upi-label">📱 UPI ID</div>
+          <div class="upi-id" onclick="copyUPI()" id="upiId">
+            khakse2gaurav2003@okaxis
+          </div>
+          <div class="copy-hint">👆 Click to copy UPI ID</div>
+        </div>
+        <div class="thank-you">
+          <strong>Thank you so much! 🙏</strong><br />
+          Your support means the world to me and helps me keep creating!<br />
+          <em>- Gaurav</em>
         </div>
       </div>
     </div>
