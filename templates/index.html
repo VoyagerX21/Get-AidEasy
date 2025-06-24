@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/styles.css" />
+  </head>
+  <body>
+    <div class="main-content">
+      <div class="header">
+        <div onclick="window.location.reload();" style="cursor: pointer; background-color: black; border: 2px solid black; border-radius: 10px; padding: 10px;">Get-EasyAid</div>
+        <div class="header-right">
+          <button
+            class="icon-btn icon-menu"
+            onclick="toggleDropdown()"
+          ></button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#">Source Code</a>
+            <a href="#">Stalk me?</a>
+            <a href="#">Buy me a coffee ☕️</a>
+          </div>
+        </div>
+      </div>
+      <div class="chat-container">
+        <h1 class="welcome-message">
+          100% Legit Coursera Financial Aid Answers
+        </h1>
+        <h1 class="welcome-message"><i>Learn smart. Apply smarter</i></h1>
+        <div class="input-container">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              class="main-input"
+              placeholder="Search for Courses by Name"
+              id="searchInput"
+            />
+            <div class="search-btn icon-search" id="searchIcon"></div>
+          </div>
+          <div class="dropdown" id="dropdown"></div>
+        </div>
+      </div>
+    </div>
+    <script src="../static/All_courses.js"></script>
+    <script src="../static/script.js"></script>
+  </body>
+</html>

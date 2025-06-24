@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personalization</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        /* background-color: #212121; */
+        background-image: url("../static/bgc.png");
+        background-size: cover, cover;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+        color: white;
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Main Content */
+      .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .header {
+        background-color: rgb(240, 239, 238);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        border-bottom: 1px solid #2d2d2d;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .icon-btn {
+        width: 32px;
+        height: 32px;
+        background: none;
+        border: none;
+        color: #000000;
+        cursor: pointer;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+      }
+
+      .icon-btn:hover {
+        background-color: #2d2d2d;
+      }
+
+      /* Chat Area */
+      .chat-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container {
+        width: 70%;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:disabled {
+        background-color: #f0f0f0;
+        color: #666;
+      }
+
+      .IndicatorOfSpec {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
+        padding: 12px 20px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+        border-left: 4px solid #2c3e50;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .IndicatorOfSpec::before {
+        content: "ℹ️";
+        margin-right: 8px;
+        font-size: 18px;
+      }
+
+      .IndicatorOfSpec::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .IndicatorOfSpec:hover::after {
+        left: 100%;
+      }
+
+      .specialization-section {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #fafafa;
+      }
+
+      .specialization-title {
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+      }
+
+      /* Checkbox styling */
+      .checkbox-wrapper-19 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .checkbox-wrapper-19 input[type="checkbox"] {
+        display: none;
+      }
+
+      .checkbox-wrapper-19 .check-box {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #3498db;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box {
+        background-color: #3498db;
+      }
+
+      .checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .checkbox-wrapper-19 .course-label {
+        font-weight: normal;
+        cursor: pointer;
+        margin-bottom: 0;
+      }
+
+      /* Toggle button styling */
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .toggle-switch {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        background-color: #ccc;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .toggle-switch.active {
+        background-color: #3498db;
+      }
+
+      .toggle-slider {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 24px;
+        height: 24px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+
+      .toggle-switch.active .toggle-slider {
+        transform: translateX(30px);
+      }
+
+      .toggle-labels {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .toggle-label {
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .toggle-label.active {
+        color: #3498db;
+      }
+
+      .submit-btn {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+      }
+
+      .submit-btn:hover {
+        background-color: #2980b9;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        background: rgb(214, 204, 123);
+        color: black;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: none;
+        flex-direction: column;
+        min-width: 150px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+      }
+
+      .dropdown-menu a {
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        border-bottom: 1px solid #eee;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #f1f1f1;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          background-image: linear-gradient(#364ec9, #af127e);
+        }
+
+        .header {
+          background-color: #212121;
+        }
+
+        .icon-btn {
+          color: white;
+        }
+
+        .form-container {
+          width: 95%;
+        }
+      }
+
+      .icon-menu::before {
+        content: "☰";
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-content">
+      <div class="header">
+        <div
+          onclick="window.location.href='/'"
+          style="
+            cursor: pointer;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            color: black;
+          "
+        >
+          Home
+        </div>
+        <div class="header-right">
+          <button
+            class="icon-btn icon-menu"
+            onclick="toggleDropdown()"
+          ></button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#">Source Code</a>
+            <a href="#">Stalk my insta?</a>
+            <a href="#">Buy me a coffee ☕️</a>
+          </div>
+        </div>
+      </div>
+      <div class="chat-container">
+        <div class="form-container">
+          <form action="/GetPrompt" method="POST">
+            <!-- Disabled label for selected course type -->
+            <div class="form-group">
+              <label for="courseType">Selected Course</label>
+              <input
+                type="text"
+                id="courseType"
+                name="courseType"
+                value="{{ obj.get('title') }}"
+                disabled
+              />
+              <input
+                type="hidden"
+                name="courseType"
+                value="{{ obj.get('title') }}"
+              />
+            </div>
+
+            <!-- Course selection by specialization -->
+            {% if url %}
+            <p class="IndicatorOfSpec">
+              This course is under a
+              <a href="{{ url }}" style="color: black" target="_blank"
+                >specialization</a
+              >
+            </p>
+            <input type="hidden" name="specialization" value="{{ url }}" />
+            <div class="specialization-section">
+              <div class="specialization-title">
+                ✓ Check other completed courses below
+              </div>
+              <div class="courses-grid">
+                {% for idx, val in courselist %}
+                <div class="checkbox-wrapper-19">
+                  <input
+                    type="checkbox"
+                    id="course{{ idx }}"
+                    name="courses"
+                    value="{{ val }}"
+                  />
+                  <label for="course{{ idx }}" class="check-box"></label>
+                  <label for="course{{ idx }}" class="course-label"
+                    >{{ val }}</label
+                  >
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Name field -->
+            <div class="form-group">
+              <label for="name">Full Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <!-- Toggle button for Student/Working -->
+            <div class="form-group">
+              <label>Status:</label>
+              <div class="toggle-container">
+                <div class="toggle-labels">
+                  <span class="toggle-label active" id="studentLabel"
+                    >Student</span
+                  >
+                  <div class="toggle-switch" id="statusToggle">
+                    <div class="toggle-slider"></div>
+                  </div>
+                  <span class="toggle-label" id="workingLabel">Working</span>
+                </div>
+              </div>
+              <input type="hidden" id="status" name="status" value="student" />
+            </div>
+
+            <!-- Dynamic fields based on status -->
+            <div class="form-group" id="instituteField">
+              <label for="institute">Institute/School:</label>
+              <input type="text" id="institute" name="institute" />
+            </div>
+
+            <div class="form-group hidden" id="organizationField">
+              <label for="organization">Organization:</label>
+              <input type="text" id="organization" name="organization" />
+            </div>
+
+            <div class="form-group" id="yearField">
+              <label for="year">Year of Study:</label>
+              <input
+                type="text"
+                id="year"
+                name="year"
+                placeholder="e.g., 2 for 2nd year"
+              />
+            </div>
+
+            <div class="form-group hidden" id="positionField">
+              <label for="position">Position:</label>
+              <input
+                type="text"
+                id="position"
+                name="position"
+                placeholder="e.g., Software Engineer, Manager"
+              />
+            </div>
+
+            <button type="submit" class="submit-btn">Get Result</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      id="loaderOverlay"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 9999;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        text-align: center;
+      "
+    >
+      <div
+        style="
+          width: 50px;
+          height: 50px;
+          border: 5px solid #f3f3f3;
+          border-top: 5px solid #3498db;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+          margin-bottom: 15px;
+        "
+      ></div>
+      <span>Generating... please wait</span>
+    </div>
+    <script src="../static/All_courses.js"></script>
+    <script>
+      // const index = parseInt(document.getElementById("indicator").innerHTML);
+      // document.addEventListener("DOMContentLoaded", (event) => {
+      //     console.log(obj);
+      // })
+      function toggleDropdown() {
+        const menu = document.getElementById("dropdownMenu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+
+      document.addEventListener("click", function (e) {
+        const btn = document.querySelector(".icon-menu");
+        const menu = document.getElementById("dropdownMenu");
+        if (!btn.contains(e.target) && !menu.contains(e.target)) {
+          menu.style.display = "none";
+        }
+      });
+
+      const statusToggle = document.getElementById("statusToggle");
+      const statusInput = document.getElementById("status");
+      const studentLabel = document.getElementById("studentLabel");
+      const workingLabel = document.getElementById("workingLabel");
+
+      const instituteField = document.getElementById("instituteField");
+      const organizationField = document.getElementById("organizationField");
+      const yearField = document.getElementById("yearField");
+      const positionField = document.getElementById("positionField");
+
+      function updateToggle(isWorking) {
+        if (isWorking) {
+          statusToggle.classList.add("active");
+          statusInput.value = "working";
+          studentLabel.classList.remove("active");
+          workingLabel.classList.add("active");
+
+          // Show working fields, hide student fields
+          instituteField.classList.add("hidden");
+          organizationField.classList.remove("hidden");
+          yearField.classList.add("hidden");
+          positionField.classList.remove("hidden");
+        } else {
+          statusToggle.classList.remove("active");
+          statusInput.value = "student";
+          studentLabel.classList.add("active");
+          workingLabel.classList.remove("active");
+
+          // Show student fields, hide working fields
+          instituteField.classList.remove("hidden");
+          organizationField.classList.add("hidden");
+          yearField.classList.remove("hidden");
+          positionField.classList.add("hidden");
+        }
+      }
+
+      statusToggle.addEventListener("click", function () {
+        const isCurrentlyStudent = statusInput.value === "student";
+        updateToggle(isCurrentlyStudent);
+      });
+
+      studentLabel.addEventListener("click", function () {
+        updateToggle(false);
+      });
+
+      workingLabel.addEventListener("click", function () {
+        updateToggle(true);
+      });
+
+      // Initialize with student selected
+      updateToggle(false);
+
+      document.querySelector("form").addEventListener("submit", function (e) {
+        // Show the loader
+        document.getElementById("loaderOverlay").style.display = "flex";
+
+        // Optionally disable interaction
+        document.body.style.pointerEvents = "none";
+      });
+    </script>
+  </body>
+</html>
