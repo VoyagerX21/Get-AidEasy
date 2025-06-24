@@ -68,8 +68,19 @@ def getprompt():
     p2 = personalisedDetails(data)+second
     try:
         return render_template("ShowResponse.html", firstRes = GetResponse(p1), secondRes = GetResponse(p2))
-    except:
-        return render_template("NotFound.html", statusCode = 500, title = "Internal Server Error", desc = "Something went wrong while communicating with an external API. Please try again later or contact support if the issue persists.", btn="Try Again")
+    except Exception as e:
+        if "503" in str(e) or "overloaded" in str(e):
+            return render_template("NotFound.html", 
+                statusCode=503, 
+                title="Service Temporarily Unavailable", 
+                desc="Our AI service is currently experiencing high traffic. Please try again in a few moments.", 
+                btn="Retry")
+        else:
+            return render_template("NotFound.html", 
+                statusCode=500, 
+                title="Internal Server Error", 
+                desc="Something went wrong. Please try again later.", 
+                btn="Try Again")
 
 @app.post("/regenerate")
 def regen():
