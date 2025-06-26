@@ -16,7 +16,7 @@
 ---
 
 ## 🖼️ Website Preview
-![Screenshot](https://get-easyaid.onrender.com/static/images-preview/video-preview.gif)
+[![video-preview.gif](https://i.postimg.cc/44v1tF5W/video-preview.gif)](https://postimg.cc/7b67r9jz)
 
 ### 🏠 Landing Page
 Users land on a clean and responsive interface where they can search or select their desired course.
