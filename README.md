@@ -1,78 +1,99 @@
 # ![WebApp](https://get-easyaid.onrender.com/static/images-preview/Results.png)
-# Get-EasyAid
+# Get-EasyAid ✨🎓
 <table>
 <tr>
 <td>
-  A webapp using Quandl API to display history of stock growth in a given period of time. It helps predict the growth of stocks from the  charts of stock performace in any period of time. It helps to judge stocks, with the principle of momentum investing, which returns 1% per month on average.
+  <b>Get-EasyAid</b> is a responsive and intelligent web app that simplifies the <b>Coursera Financial Aid</b> process by generating personalized answers using <b>Google Gemini API</b> 🤖. Users can select their course, fill a tailored personalization form, and receive AI-generated responses to the two mandatory application questions — saving time, effort, and stress!
 </td>
 </tr>
 </table>
 
+---
 
-## Demo
-Here is a working live demo :  https://get-easyaid.onrender.com/
+## 🚀 Live Demo
+👉 Check it out here: [https://get-easyaid.onrender.com](https://get-easyaid.onrender.com)
 
+---
 
-## Site
+## 🖼️ Website Preview
+![Screenshot](https://get-easyaid-onrender.com/static/images-preview/video-preview.gif)
 
-### Landing Page
-Currently it is working on all NSE (India) Stocks, BSE (India) Stocks Symbol will be added soon.
+### 🏠 Landing Page
+Users land on a clean and responsive interface where they can search or select their desired course.
 
-![](https://get-easyaid.onrender.com/static/images-preview/Home.png)
+![Landing Page](https://get-easyaid.onrender.com/static/images-preview/Home.png)
 
-### Query Filled Form
-![](https://get-easyaid.onrender.com/static/images-preview/Personalization.png)
+---
 
-### Charts
-![](https://get-easyaid.onrender.com/static/images-preview/Results.png)
+### 📝 Personalization Form
+Each course comes with a dynamic form tailored to its specialization. The form collects essential details like:
+- Completed courses under the specialization
+- Your name, status (student/working), institution/organization
+- Background details (year of study, job position, etc.)
 
+![Form](https://get-easyaid.onrender.com/static/images-preview/Personalization.png)
 
-## Mobile support
-The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements are being made.
+---
 
-![](https://get-easyaid.onrender.com/static/images-preview/mobile.png)
+### 📄 Results Page
+On submission, the app uses Gemini API to generate:
+- A **custom response** for "Why are you applying for Financial Aid?"
+- A **goal-oriented response** for "How will this course help you?"
 
+You can also:
+- 🔁 Regenerate answers
+- 📋 Copy text with one click
 
-## [Usage](https://iharsh234.github.io/WebApp/) 
+![Results Page](https://get-easyaid.onrender.com/static/images-preview/Results.png)
 
-### Development
-Want to contribute? Great!
+---
 
-To fix a bug or enhance an existing module, follow these steps:
+## 📱 Mobile Support
 
-- Fork the repo
-- Create a new branch (`git checkout -b improve-feature`)
-- Make the appropriate changes in the files
-- Add changes to reflect the changes made
-- Commit your changes (`git commit -am 'Improve feature'`)
-- Push to the branch (`git push origin improve-feature`)
-- Create a Pull Request 
+Get-EasyAid is fully responsive and works smoothly across all screen sizes and devices! ✅
 
-### Bug / Feature Request
+![Mobile View](https://get-easyaid.onrender.com/static/images-preview/mobile.png)
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/iharsh234/WebApp/issues/new) by including your search query and the expected result.
+---
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/iharsh234/WebApp/issues/new). Please include sample queries and their corresponding results.
+## 🛠️ Tech Stack
 
+Built with modern tools:
 
-## Built with 
+- ⚙️ Flask (Backend)
+- 🎨 HTML, CSS, JS
+- 🌐 Jinja Templating
+- 📡 Google Gemini API (Free-tier)
+- 💻 Bootstrap for responsiveness
+- ⚡ jQuery & AJAX for seamless frontend-backend interaction
 
-- [jQuery - Ajax](http://www.w3schools.com/jquery/jquery_ref_ajax.asp) - jQuery simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.
-- [Google Chart API](https://developers.google.com/chart/interactive/docs/quick_start) - Free , Rich Gallery , Customizable and Cross-browser compatible.
-- [Bootstrap](http://getbootstrap.com/) - Extensive list of components and  Bundled Javascript plugins.
+---
 
+## 💡 Features
 
-## To-do
-- Add BSE (India) Symbol to the current App.
-- Decide comparison models of Stocks. (suggestions are most welcome).
-- Another WebApp, capable of comparing at least 10 stocks.
+- 📚 Coursera course selector & auto-specialization fetch
+- 📝 Dynamic personalization form
+- 🤖 Gemini API-powered prompt generation
+- 📄 Clean results display with regenerate & copy options
+- 💻 Fully responsive UI for all screens
 
-## Team
+---
 
-[![Harsh Vijay](https://avatars1.githubusercontent.com/u/12688534?v=3&s=144)](https://github.com/iharsh234)  | [![Quandl.com](https://github.com/iharsh234/WebApp/blob/master/images/quandl.jpg)](https://www.quandl.com/)
----|---
-[Harsh Vijay ](https://github.com/iharsh234) |[Quandl](https://www.quandl.com)
+## 🧪 Local Development
 
-## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md)
+Want to contribute or run it locally?
 
-MIT © [Harsh Vijay ](https://github.com/iharsh234)
+```bash
+git clone https://github.com/your-username/Get-EasyAid.git
+cd Get-EasyAid
+pip install -r requirements.txt
+python app.py
+```
+
+## ⚠️ Heads-Up!
+
+> 💤 **Patience, Padawan!**  
+> This site is hosted on Render’s free tier — if it’s been asleep for a bit, it might take a few seconds to wake up. Totally normal. Just let it stretch and boot up. 🐢💻
+
+> 🤖 **AI Mood Swings!**  
+> Sometimes the Gemini API gets a bit dramatic and throws a 500 error. Just refresh the page or hit the "Regenerate" button — it usually sorts itself out. 😅
