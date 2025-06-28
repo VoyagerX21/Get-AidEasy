@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name:  Build Docker image
-        run: docker build ./ -t prateeklohani/geteasy-app:latest
+        run: docker build ./ --no-cache -t prateeklohani/geteasy-app:latest
 
       - name:  Push image to Docker Hub
         run: |
