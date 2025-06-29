@@ -1,0 +1,33 @@
+name: Render Deploy
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+    paths-ignore:
+      - ".github/workflows/*"
+      - "README.md"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name:  Build Docker image
+        run: docker build ./ --no-cache -t prateeklohani/geteasy-app:latest
+
+      - name:  Push image to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u prateeklohani --password-stdin
+          docker push prateeklohani/geteasy-app:latest
+
+      - name:  Trigger Render Deploy
+        run: |
+          curl -X POST https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+          -H "Content-Type: application/json"
