@@ -90,6 +90,12 @@ pip install -r requirements.txt
 python app.py
 ```
 
+## 🤝 Contributors
+
+- **[@prateek-lohani](https://github.com/lohaniprateekhttps://github.com/lohaniprateek)** — 🛠️ Contributed the full Docker setup and optimized containerized deployment process!
+
+---
+
 ## ⚠️ Heads-Up!
 
 > 💤 **Patience, Padawan!**  
